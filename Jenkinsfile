@@ -39,11 +39,10 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 echo "Deploying application..."
-
                 sh '''
-                sudo mkdir -p $APP_DIR
-                sudo rm -rf $APP_DIR/*
-                sudo cp -r * $APP_DIR
+                mkdir -p $APP_DIR
+                rm -rf $APP_DIR/*
+                cp -r * $APP_DIR
                 '''
             }
         }
@@ -51,7 +50,6 @@ pipeline {
         stage('Start Application') {
             steps {
                 echo "Starting application using PM2..."
-
                 sh '''
                 cd $APP_DIR
                 npm install --production
